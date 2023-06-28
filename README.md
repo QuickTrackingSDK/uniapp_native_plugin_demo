@@ -1,4 +1,7 @@
 # aplus_uniapp_app
+QuickTracking Uniapp Android原生插件集成demo
+
+
 
 ## Project setup
 ```

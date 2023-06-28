@@ -1,0 +1,133 @@
+{
+    "name": "qt-analytics-plugin",
+    "id": "qt-analytics-plugin",
+    "version": "0.0.3",
+    "description": "QT统计SDK插件",
+    "_dp_type":"nativeplugin",
+    "_dp_nativeplugin":{
+        "android": {
+            "plugins": [
+                {
+                    "type": "module",
+                    "name": "qt-analytics-plugin",
+                    "class": "com.umeng.uniapp.analytics.UniAnalyticsModule"
+                }
+            ],
+            "hooksClass": "com.umeng.uniapp.analytics.UniAnalyticsProxy",
+            "integrateType": "aar",
+            "dependencies": [
+                "com.umeng.umsdk:qt-common:1.3.0.P",
+                "com.umeng.umsdk:qt-spm:1.3.0"
+
+            ],
+            "compileOptions": {
+                "sourceCompatibility": "1.8",
+                "targetCompatibility": "1.8"
+            },
+            "minSdkVersion": "19",
+            "permissions": [
+                "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                "<uses-permission android:name=\"android.permission.INTERNET\"/>"
+            ],
+            "parameters": {
+                "server_url": {
+                  "des": "SDK收数地址，必须包含https://，例如：https://您的域名",
+                  "key": "UMENG_URL"
+                },
+                "server_url2": {
+                  "des": "SDK收数备用地址，没有可以设置空字符串。",
+                  "key": "UMENG_URL2"
+                },
+                "quick_tracking_appkey": {
+                  "des": "在Quick tracking平台申请的appkey，如果appkey为纯数字，需要在其开头加上连续2个 `#` 号字符",
+                  "key": "UMENG_APPKEY"
+                },
+                "quick_tracking_channel": {
+                  "des": "应用发布渠道",
+                  "key": "UMENG_CHANNEL"
+                },
+                "show_sdk_log": {
+                  "des": "设置SDK是否开启调试日志，`1`：开启，`0`：不开启，默认 不开启",
+                  "key": "UMENG_LOG"
+                },
+                "collection_mode": {
+                  "des": "配置值为`0`，对应SDK自动采集模式。配置值为`1`，对应SDK手动采集模式。建议开发者选择配置值`0`",
+                  "key": "UMENG_MODE"
+                },
+                "no_activity_path": {
+                  "des": "设置是否关闭Activity页面路径自动采集，`1`：关闭，`0`：不关闭，默认值：不关闭",
+                  "key": "UMENG_NOACTIVITYPATH"
+                }
+                
+            }
+        },
+        "ios": {
+                    "plugins": [
+                        {
+                            "type": "module",
+                            "name": "qt-analytics-plugin",
+                            "class": "UniUMAnalyticsModule"
+                        }
+                    ],
+                    "integrateType": "framework",
+                    "hooksClass": "UniUMAnalyticsProxy",
+                    "frameworks": [
+                        "CoreTelephony.framework",
+                        "SystemConfiguration.framework",
+                        "libz.tbd",
+                        "libsqlite3.tbd"
+                    ],
+                    "embedFrameworks": [
+                    ],
+                    "capabilities": {
+                        "entitlements": {
+                        },
+                        "plists": {
+                        }
+                    },
+                    "plists": {
+                    },
+                    "assets": [
+                    ],
+                    "privacies": [
+                    ],
+                    "embedSwift": false,
+                    "deploymentTarget": "9.0",
+                    "validArchitectures": [
+                        "armv7",
+                        "arm64",
+                        "x86_64",
+                        "i386"
+                    ],
+                    "parameters": {
+                        "server_url": {
+                          "des": "SDK主收数域名，必须配置，不能为nil或者空字符串",
+                          "key": "UMeng-UniPlugin-App:primaryDomain"
+                        },
+                        "server_url2": {
+                          "des": "SDK备用收数域名，没有可以设置为空字符串",
+                          "key": "UMeng-UniPlugin-App:standbyDomain"
+                        },
+                        "quick_tracking_appkey": {
+                          "des": "Quick Tracking平台申请的appkey，必须配置，不能为nil或者空字符串",
+                          "key": "UMeng-UniPlugin-App:appkey"
+                        },
+                        "quick_tracking_channel": {
+                          "des": "应用发布渠道",
+                          "key": "UMeng-UniPlugin-App:channel"
+                        },
+                        "ios_show_sdk_log": {
+                          "des": "设置SDK是否开启调试日志，true-日志打开，false-日志关闭",
+                          "key": "UMeng-UniPlugin-App:enableLog"
+                        },
+                        "is_auto_page": {
+                            "des": "设置SDK是否为自动页面采集模式，true-是，false-否",
+                            "key": "UMeng-UniPlugin-App:isAutoPage"
+                        }
+                    },
+                    "resources": [
+                    ]
+                }
+    }
+}

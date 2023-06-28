@@ -1,0 +1,157 @@
+{
+    "name" : "aplus_unipp_native",
+    "appid" : "__UNI__3BCE7B2",
+    "description" : "",
+    "versionName" : "1.0.0",
+    "versionCode" : "100",
+    "transformPx" : false,
+    /* 5+App特有相关 */
+    "app-plus" : {
+        "usingComponents" : true,
+        "nvueStyleCompiler" : "uni-app",
+        "compilerVersion" : 3,
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        /* 模块配置 */
+        "modules" : {},
+        /* 应用发布信息 */
+        "distribute" : {
+            /* android打包配置 */
+            "android" : {
+                "permissions" : [
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ]
+            },
+            /* ios打包配置 */
+            "ios" : {
+                "dSYMs" : false
+            },
+            /* SDK配置 */
+            "sdkConfigs" : {
+                "ad" : {}
+            }
+        },
+        "nativePlugins" : {
+            "qt-analytics-plugin" : {
+                "collection_mode" : "",
+                "ios_show_sdk_log" : "",
+                "is_auto_page" : "",
+                "no_activity_path" : "",
+                "quick_tracking_appkey" : "",
+                "quick_tracking_channel" : "",
+                "server_url" : "",
+                "server_url2" : "",
+                "show_sdk_log" : "",
+                "__plugin_info__" : {
+                    "name" : "qt-analytics-plugin",
+                    "description" : "QuickTracking 统计SDK插件",
+                    "platforms" : "Android,iOS",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=8712",
+                    "android_package_name" : "com.umeng.uniappdemo",
+                    "ios_bundle_id" : "com.dcloud.umeng",
+                    "isCloud" : true,
+                    "bought" : 1,
+                    "pid" : "8712",
+                    "parameters" : {
+                        "collection_mode" : {
+                            "des" : "配置值为`0`，对应SDK自动采集模式。配置值为`1`，对应SDK手动采集模式。建议开发者选择配置值`0`",
+                            "key" : "UMENG_MODE",
+                            "value" : ""
+                        },
+                        "ios_show_sdk_log" : {
+                            "des" : "设置SDK是否开启调试日志，true-日志打开，false-日志关闭",
+                            "key" : "UMeng-UniPlugin-App:enableLog",
+                            "value" : ""
+                        },
+                        "is_auto_page" : {
+                            "des" : "设置SDK是否为自动页面采集模式，true-是，false-否",
+                            "key" : "UMeng-UniPlugin-App:isAutoPage",
+                            "value" : ""
+                        },
+                        "no_activity_path" : {
+                            "des" : "设置是否关闭Activity页面路径自动采集，`1`：关闭，`0`：不关闭，默认值：不关闭",
+                            "key" : "UMENG_NOACTIVITYPATH",
+                            "value" : ""
+                        },
+                        "quick_tracking_appkey" : {
+                            "des" : "Quick Tracking平台申请的appkey，必须配置，不能为nil或者空字符串",
+                            "key" : "UMeng-UniPlugin-App:appkey",
+                            "value" : ""
+                        },
+                        "quick_tracking_channel" : {
+                            "des" : "应用发布渠道",
+                            "key" : "UMeng-UniPlugin-App:channel",
+                            "value" : ""
+                        },
+                        "server_url" : {
+                            "des" : "SDK主收数域名，必须配置，不能为nil或者空字符串",
+                            "key" : "UMeng-UniPlugin-App:primaryDomain",
+                            "value" : ""
+                        },
+                        "server_url2" : {
+                            "des" : "SDK备用收数域名，没有可以设置为空字符串",
+                            "key" : "UMeng-UniPlugin-App:standbyDomain",
+                            "value" : ""
+                        },
+                        "show_sdk_log" : {
+                            "des" : "设置SDK是否开启调试日志，`1`：开启，`0`：不开启，默认 不开启",
+                            "key" : "UMENG_LOG",
+                            "value" : ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    /* 快应用特有相关 */
+    "quickapp" : {},
+    /* 小程序特有相关 */
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false
+        },
+        "usingComponents" : true
+    },
+    "mp-alipay" : {
+        "usingComponents" : true
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true
+    },
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "vueVersion" : "2",
+    "h5" : {
+        "template" : "index.html",
+        "title" : "uniapp_aplus_demo",
+        "router" : {
+            "mode" : "history"
+        },
+        "devServer" : {
+            "https" : false
+        }
+    }
+}

@@ -66,9 +66,9 @@ export default {
 				// #ifdef APP-PLUS
 				if (uni.getSystemInfoSync().platform === 'ios') {
 					// console.log('yz-------qt_plugin', qt_plugin);
-					// qt_plugin.initWithAppkey('x4sg2k3zvr2w6fuh1mb8shwr', 'YuZhaoUniapp', 1, '');
+					// qt_plugin.initWithAppkey('appKey', '设置渠道', 1, '');
 				} else {
-					qt_plugin.init('uqcc3wskqjgbvj2ntvapebx9', 'YuZhaoUniapp', 1, '');
+					qt_plugin.init('appKey', '设置渠道', 1, '');
 				}
 				// #endif
 			} else {

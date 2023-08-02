@@ -1,11 +1,12 @@
 // #ifdef MP
-import aplus_mini from './aplus_mini.js';
+// import aplus_mini from './aplus_mini.js';
+import { initQTSDK } from './qt_mini.umd.js';
 const aplusConfig = {
   metaInfo: {
    'appKey': 'testAppKey',
-   'aplus-rhost-v': '采集日志上报域名，必填',
+   'trackDomain': '采集日志上报域名，必填',
    'DEBUG': true,
-   'aplus-waiting': 'MAN', //关闭自动pv
+   // 'aplus-waiting': 'MAN', //关闭自动pv
    _anony_id: 'testOpenId', //必填
    'globalproperty': {
      a: undefined,
@@ -45,7 +46,8 @@ const aplusConfig = {
   }
 };
 
-const aplus = aplus_mini(aplusConfig);
+// const aplus = aplus_mini(aplusConfig);
+const aplus = initQTSDK(aplusConfig).ctx.aplus;
 
 aplus.install = function(Vue) {
 	Vue.prototype.$aplus = aplus;

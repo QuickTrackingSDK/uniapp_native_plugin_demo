@@ -2,7 +2,7 @@
  * umeng H5/小程序/iOS/Android 四端sdk适配层
  */
 // #ifdef MP
-import aplusVar from './aplus.js';
+import aplus from './aplus.js';
 // #endif
 
 
@@ -13,14 +13,15 @@ export default {
 		// #endif 
 		
 		// #ifdef MP
-		const {aplus_queue } = aplusVar;
-		aplus_queue.push({
-			action: 'aplus.sendPV',
-			arguments: [
-				{is_auto: false},
-				{...params}
-			]
-		})
+		aplus.sendPV({is_auto: false}, {...params});
+		// const {aplus_queue } = apwxlusVar;
+		// aplus_queue.push({
+		// 	action: 'aplus.sendPV',
+		// 	arguments: [
+		// 		{is_auto: false},
+		// 		{...params}
+		// 	]
+		// })
 		// #endif
 		
 		// #ifdef H5
@@ -37,12 +38,12 @@ export default {
 	
 	sendEvent: function(eventId, params, eventType = 'CLK', method = 'POST') {
 		// #ifdef MP
-		const { aplus_queue } = aplusVar;
+		aplus.record(eventId, eventType, {...params}, method);
 		console.log('yz-----aplus_queue', eventId, params, eventType);
-		aplus_queue.push({
-			'action': 'aplus.record',
-			'arguments': [eventId, eventType, {...params}, method]
-		})
+		// aplus_queue.push({
+		// 	'action': 'aplus.record',
+		// 	'arguments': [eventId, eventType, {...params}, method]
+		// })
 		// #endif
 		
 		// #ifdef H5
@@ -91,16 +92,17 @@ export default {
 		// #endif
 		
 		// #ifdef MP
-		const { aplus_queue } = aplusVar;
+		// const { aplus_queue } = aplusVar;
 		/**
 		 * @example:
 		 *  aplus_queue.push({action: 'aplus.setMetaInfo', arguments: ['globalproperty', { a: 1, b: '2', c: null, d: undefined, e: '' }]});
 		 * @params 一级平铺自定义全局属性键值对，不支持嵌套
 		 */
-		aplus_queue.push({
-			action: 'aplus.setMetaInfo',
-			arguments: ['globalproperty', { ...params }]
-		});
+		aplus.setMetaInfo('globalproperty', { ...params });
+		// aplus_queue.push({
+		// 	action: 'aplus.setMetaInfo',
+		// 	arguments: ['globalproperty', { ...params }]
+		// });
 		// #endif
 	},
 	
@@ -115,11 +117,12 @@ export default {
 		// #endif
 		
 		// #ifdef MP
-		const { aplus_queue } = aplusVar;
-		aplus_queue.push({
-			action: 'aplus.appendMetaInfo',
-			arguments: ['globalproperty', { ...params }]
-		})
+		// const { aplus_queue } = aplusVar;
+		// aplus_queue.push({
+		// 	action: 'aplus.appendMetaInfo',
+		// 	arguments: ['globalproperty', { ...params }]
+		// })
+		aplus.appendMetaInfo('globalproperty', { ...params });
 		// #endif
 	},
 	// #endif
@@ -155,11 +158,12 @@ export default {
 		// #endif
 		
 		// #ifdef MP
-		const { aplus_queue } = aplusVar;
-		aplus_queue.push({
-			action: 'aplus.setMetaInfo',
-			arguments: ['globalproperty', {}]
-		})
+		// const { aplus_queue } = aplusVar;
+		// aplus_queue.push({
+		// 	action: 'aplus.setMetaInfo',
+		// 	arguments: ['globalproperty', {}]
+		// })
+		aplus.setMetaInfo('globalproperty', {});
 		// #endif
 	},
 
@@ -177,7 +181,7 @@ export default {
 		// #ifdef APP
 		console.log('yz---------', puid, organization)
 		const qt_plugin = uni.requireNativePlugin('qt-analytics-plugin')
-		UmengAnalytics.onProfileSignIn(puid, organization)
+		qt_plugin.onProfileSignIn(puid, organization)
 		// #endif
 		
 		// #ifdef H5
@@ -189,11 +193,8 @@ export default {
 		// #endif
 		
 		// #ifdef MP
-		const {aplus_queue} = aplusVar;
-		aplus_queue.push({
-			action: 'aplus.setMetaInfo',
-			arguments: ['_user_id', puid]
-		})
+		aplus.setMetaInfo('_user_id', puid);
+
 		// #endif
 	}
 	

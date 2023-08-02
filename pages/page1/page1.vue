@@ -9,17 +9,16 @@
 	// #ifdef APP-PLUS
 	const qt_plugin = uni.requireNativePlugin('qt-analytics-plugin')
 	// #endif 
-	import UmengSDK from '../../utils/umengAdaptor.js'
+	import sdkAdaptor from '../../utils/sdkAdaptor.js'
 	export default {
 		onShow() {
 			// #ifdef APP-PLUS
-			console.log("yz------qt_plugin", qt_plugin);
 				qt_plugin.onPageStart('Page1')
 			// #endif
 			
 			// #ifdef MP | H5
 			//允许自定义页面编码 page_name
-			UmengSDK.sendPV({a: 1, b: 2, c: 3, page_name: 'manpv_page_custom', d: undefined, e: null, f: ''})
+			sdkAdaptor.sendPV({a: 1, b: 2, c: 3, page_name: 'manpv_page_custom', d: undefined, e: null, f: ''})
 			// #endif
 		},
 		onHide() {

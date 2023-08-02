@@ -6,25 +6,25 @@
 
 <script>
 // #ifdef APP-PLUS
-const UmengAnalytics = uni.requireNativePlugin('qt-analytics-plugin')
+const qt_plugin = uni.requireNativePlugin('qt-analytics-plugin')
 // #endif	
-import UmengSDK from '../../utils/umengAdaptor.js'
+import sdkAdaptor from '../../utils/sdkAdaptor.js'
 
 export default {
 	onShow() {
 		// #ifdef APP-PLUS
-		UmengAnalytics.onPageStart('Page2')
+		qt_plugin.onPageStart('Page2')
 		// #endif
-		UmengSDK.sendPV({a: 1, b: 2, c: 3, page_name: 'manpv_page_custom', d: undefined, e: null, f: ''})
+		sdkAdaptor.sendPV({a: 1, b: 2, c: 3, page_name: 'manpv_page_custom', d: undefined, e: null, f: ''})
 	},
 	onHide() {
 		// #ifdef APP-PLUS
-			UmengAnalytics.onPageEnd('Page2')
+		qt_plugin.onPageEnd('Page2')
 		// #endif
 	},
 	onUnload() {
 		// #ifdef APP-PLUS
-			UmengAnalytics.onPageEnd('Page2')
+		qt_plugin.onPageEnd('Page2')
 		// #endif
 	},
 	data() {

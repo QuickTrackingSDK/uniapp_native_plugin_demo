@@ -37,7 +37,7 @@
 // #ifdef APP
 const qt_plugin = uni.requireNativePlugin('qt-analytics-plugin')
 // #endif
-import UmengSDK from '../../utils/umengAdaptor.js'
+import sdkAdaptor from '../../utils/sdkAdaptor.js'
 export default {
 	methods: {
 		registerGP() {
@@ -49,11 +49,14 @@ export default {
 				cancelText:'取消',
 				success(res) {
 					if(res && res.confirm) {
+						console.log('yz----', JSON.stringify(that.gp))
 						// #ifdef APP-PLUS
 						qt_plugin.registerGlobalProperties(JSON.stringify(that.gp));
 						// #endif
-						console.log('yz----', JSON.stringify(that.gp))
-						// UmengSDK.registerGlobalProperties(that.gp);
+						// #ifdef H5 | MP
+						
+						sdkAdaptor.registerGlobalProperties(that.gp);
+						// #endif
 					} else {
 						
 					}
@@ -97,7 +100,7 @@ export default {
 				content: JSON.stringify(curGP || {}),
 			})
 			// #endif
-			// var curGP = UmengSDK.getGlobalProperties();
+			// var curGP = sdkAdaptor.getGlobalProperties();
 			// uni.showModal({
 			// 	title: '当前全局属性',
 			// 	content: JSON.stringify(curGP || {}),
@@ -110,7 +113,7 @@ export default {
 				cancelText:'取消',
 				success(res) {
 					if(res && res.confirm) {
-						UmengSDK.clearGlobalProperties();
+						sdkAdaptor.clearGlobalProperties();
 					} else {
 						
 					}
@@ -131,7 +134,7 @@ export default {
 				success(res) {
 					if(res && res.confirm) {
 						console.log('yz-----up', that.up);
-						UmengSDK.sendEvent('$$_user_profile', that.up, 'OTHER')
+						sdkAdaptor.sendEvent('$$_user_profile', that.up, 'OTHER')
 					} else {
 						
 					}
@@ -146,7 +149,7 @@ export default {
 				content: '当前用户账号为' + that.puid + '; ' + 'native环境下，还支持设置组织，详细见代码',
 				success(res) {
 					if(res && res.confirm) {
-						UmengSDK.setUserId(that.puid, that.organization);
+						sdkAdaptor.setUserId(that.puid, that.organization);
 					} else {
 						
 					}

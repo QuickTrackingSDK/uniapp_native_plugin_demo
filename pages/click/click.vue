@@ -26,11 +26,8 @@
 </template>
 
 <script>
-// // #ifdef APP
-// const UmengAnalytics = uni.requireNativePlugin('UmengAnalytics')
-// // #endif
 
-import UmengSDK from '../../utils/umengAdaptor.js'
+import sdkAdaptor from '../../utils/sdkAdaptor.js'
 
 export default {
     data() {
@@ -46,26 +43,31 @@ export default {
 	methods: {
 		clickEvent: function() {			
 			// #ifdef MP | H5
-			UmengSDK.sendEvent('test_clk', this.detail, 'CLK');
+			sdkAdaptor.sendEvent('test_clk', this.detail, 'CLK');
 			// #endif
 			
 			// #ifdef APP
-			UmengSDK.sendEvent('test_clk', this.detail)
+			sdkAdaptor.sendEvent('test_clk', this.detail)
 			// #endif
 			
 		},
 		// #ifdef MP
 		onAplusClk: function(e) {
 			console.log(this.$aplus);
-			const { aplus_queue } = this.$aplus;
-			aplus_queue.push({
-				action: 'aplus.aplus_pubsub.publish',
-				arguments: ['onAplusClk', {
-				  status: 'ready',
-				  event: e,
-				  context: this
-				}]
-			})
+			this.$aplus.aplus_pubsub.publish('onAplusClk', {
+			  status: 'ready',
+			  event: e,
+			  context: this
+			});
+		// const { aplus_queue } = this.$aplus;
+			// aplus_queue.push({
+			// 	action: 'aplus.aplus_pubsub.publish',
+			// 	arguments: ['onAplusClk', {
+			// 	  status: 'ready',
+			// 	  event: e,
+			// 	  context: this
+			// 	}]
+			// })
 		}
 		// #endif
 		

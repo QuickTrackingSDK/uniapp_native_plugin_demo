@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	import UmengSDK from '../../utils/umengAdaptor.js'
+	import sdkAdaptor from '../../utils/sdkAdaptor.js'
 export default {
     data() {
         return {
@@ -22,7 +22,7 @@ export default {
     },
 	methods: {
 		otherEvent: function() {
-			UmengSDK.sendEvent('test_other_ekv', {a: 1, b:2, c: 3}, 'OTHER');
+			sdkAdaptor.sendEvent('test_other_ekv', {a: 1, b:2, c: 3}, 'OTHER');
 		}
 	}
 }

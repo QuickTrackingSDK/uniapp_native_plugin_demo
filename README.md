@@ -1,5 +1,5 @@
 # aplus_uniapp_app
-QuickTracking Uniapp Android原生插件集成demo
+QuickTracking Uniapp QT原生插件集成demo
 
 
 

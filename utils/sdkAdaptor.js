@@ -39,11 +39,6 @@ export default {
 	sendEvent: function(eventId, params, eventType = 'CLK', method = 'POST') {
 		// #ifdef MP
 		aplus.record(eventId, eventType, {...params}, method);
-		console.log('yz-----aplus_queue', eventId, params, eventType);
-		// aplus_queue.push({
-		// 	'action': 'aplus.record',
-		// 	'arguments': [eventId, eventType, {...params}, method]
-		// })
 		// #endif
 		
 		// #ifdef H5
@@ -61,8 +56,6 @@ export default {
 		 * @eventId 自定义事件名(字符串类型)
 		 * @params 一级平铺自定义参数属性键值对，不支持嵌套，并且iOS端不支持值为 null 和 "" 类型的键 
 		 */
-		console.log('yz---------ekvid', eventId);
-		console.log('yz------params', params);
 		qt_plugin.onEventObject(eventId, JSON.stringify(params));
 		// #endif
 	},
@@ -99,10 +92,6 @@ export default {
 		 * @params 一级平铺自定义全局属性键值对，不支持嵌套
 		 */
 		aplus.setMetaInfo('globalproperty', { ...params });
-		// aplus_queue.push({
-		// 	action: 'aplus.setMetaInfo',
-		// 	arguments: ['globalproperty', { ...params }]
-		// });
 		// #endif
 	},
 	
@@ -117,11 +106,6 @@ export default {
 		// #endif
 		
 		// #ifdef MP
-		// const { aplus_queue } = aplusVar;
-		// aplus_queue.push({
-		// 	action: 'aplus.appendMetaInfo',
-		// 	arguments: ['globalproperty', { ...params }]
-		// })
 		aplus.appendMetaInfo('globalproperty', { ...params });
 		// #endif
 	},
@@ -179,7 +163,7 @@ export default {
 	// #endif 
 	setUserId: function(puid, organization = 'testOrganization') {
 		// #ifdef APP
-		console.log('yz---------', puid, organization)
+		console.log('puid---------', puid, organization)
 		const qt_plugin = uni.requireNativePlugin('qt-analytics-plugin')
 		qt_plugin.onProfileSignIn(puid, organization)
 		// #endif

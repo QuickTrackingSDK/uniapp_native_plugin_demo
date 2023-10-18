@@ -1,5 +1,5 @@
 // #ifdef MP
-// import aplus_mini from './aplus_mini.js';
+
 import { initQTSDK } from './qt_mini.umd.js';
 const aplusConfig = {
   metaInfo: {
@@ -46,7 +46,7 @@ const aplusConfig = {
   }
 };
 
-// const aplus = aplus_mini(aplusConfig);
+
 const aplus = initQTSDK(aplusConfig).ctx.aplus;
 
 aplus.install = function(Vue) {
